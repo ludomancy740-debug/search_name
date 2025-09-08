@@ -1,36 +1,34 @@
 {
-    "Alice": {
+    "Alice Test": {
         "type": "CheckingAccount",
         "owner": "Alice",
-        "balance": 200,
-        "pin": "0000",
-        "transactions": []
+        "balance": 300,
+        "pin": "0000"
     },
-    "Bob": {
+    "Bob Test": {
         "type": "CheckingAccount",
         "owner": "Bob",
-        "balance": 100,
-        "pin": "0000",
-        "transactions": []
+        "balance": 400,
+        "pin": "0000"
     },
-    "Charles": {
+    "Charles Test": {
         "type": "SavingsAccount",
         "owner": "Charles",
-        "balance": 50,
+        "balance": 100,
         "pin": "0000",
-        "transactions": [],
         "extra": {
             "interest_rate": 0.05
-        }
+        },
+        "transactions": []
     },
-    "Dave": {
+    "Dave Test": {
         "type": "OverdraftAccount",
         "owner": "Dave",
-        "balance": 20,
+        "balance": 200,
         "pin": "0000",
-        "transactions": [],
         "extra": {
             "overdraft": 1000
-        }
+        },
+        "transactions": []
     }
 }

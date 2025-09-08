@@ -1,12 +1,14 @@
 import config
 
-from bank import create_account, view_accounts, update_account, delete_account, load_accounts, load_test_accounts, view_transactions
-from storage import download_accounts, upload_accounts
+from bank import create_account, view_accounts, update_account, delete_account, view_transactions
+from storage import save_accounts, load_accounts
 from mixins import LoggingMixin
-from data import accounts
-from test_accounts import test_accounts
 
+
+
+#test_accounts = load_test_accounts()
 def main_menu():
+    accounts = {}
     while True:
         print("\n" + "="*30)
         print("        BANK SYSTEM MENU")
@@ -35,33 +37,33 @@ def main_menu():
         if choice == "1":
             create_account()
         elif choice == "2":
-            view_accounts()
+            view_accounts(accounts)
         elif choice == "3":
-            view_transactions()
+            view_transactions(accounts)
         elif choice == "4":
-            update_account()
+            update_account(accounts)
         elif choice == "5":
-            delete_account()
+            delete_account(accounts)
         elif choice == "6":
             config.DEBUG = not config.DEBUG
             print("Debug mode is now " + ("ON" if config.DEBUG else "OFF"))
         elif config.DEBUG and choice == "7":
             LoggingMixin.logging_enabled = not LoggingMixin.logging_enabled
         elif config.DEBUG and choice == "8":
-            load_test_accounts()
+            print("To Be Implemented....")
         elif (config.DEBUG and choice == "9") or (not config.DEBUG and choice == "7") or choice in ["7", "q", "quit"]:
             if config.DEBUG:
-                download_accounts(test_accounts)
+                #download_accounts(test_accounts)
+                print("To Be Implemented....")
             else:
-                download_accounts(accounts)
+                save_accounts(accounts)
             print("Exiting program...")
             break
         elif choice == "l":
-            load_accounts()
-            print(("Loaded Accounts!"))
+            accounts = load_accounts()
         elif choice == "t":
-            load_test_accounts()
-            print((" Loaded Test Accounts!"))
+            print("To Be Implemented....")
+            #print((" Loaded Test Accounts!"))
         else:
             print("Invalid option, try again.")
 
