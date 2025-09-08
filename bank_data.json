@@ -1,0 +1,34 @@
+{
+    "Alice": {
+        "type": "CheckingAccount",
+        "owner": "Alice",
+        "balance": 200,
+        "pin": "0000"
+    },
+    "Bob": {
+        "type": "CheckingAccount",
+        "owner": "Bob",
+        "balance": 100,
+        "pin": "0000"
+    },
+    "Charles": {
+        "type": "SavingsAccount",
+        "owner": "Charles",
+        "balance": 50,
+        "pin": "0000",
+        "extra": {
+            "interest_rate": 0.05
+        },
+        "transactions": []
+    },
+    "Dave": {
+        "type": "OverdraftAccount",
+        "owner": "Dave",
+        "balance": 20,
+        "pin": "0000",
+        "extra": {
+            "overdraft": 1000
+        },
+        "transactions": []
+    }
+}
