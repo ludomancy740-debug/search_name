@@ -61,6 +61,7 @@ def view_accounts(accounts):
         return
     for acc in accounts.values():
         acc.show_balance()
+        print(f"Type: {acc.__class__.__name__} ")
 
 def view_transactions(accounts):
     name = input("Enter Account Name: ").strip().title()

@@ -1,8 +1,13 @@
 import json
+import config
 from accounts import SavingsAccount, CheckingAccount, OverdraftAccount
 
-SAVE_FILE = "bank_data.json"
-
+#Change storage based on debug
+if config.DEBUG:
+    SAVE_FILE = "bank_data.json"
+else:
+    SAVE_FILE = "test_bank_data.json"
+    
 
 def save_accounts(accounts):
     data = {}

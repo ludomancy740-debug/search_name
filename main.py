@@ -18,7 +18,6 @@ def main_menu():
         else:
             print("Debug Mode: OFF")
         print("Press 'L' to load accounts")
-        print("Press 'T' to load test accounts")
         print("1. Create Account")
         print("2. View All Accounts")
         print("3. View Transactions")
@@ -50,19 +49,17 @@ def main_menu():
         elif config.DEBUG and choice == "7":
             LoggingMixin.logging_enabled = not LoggingMixin.logging_enabled
         elif config.DEBUG and choice == "8":
-            print("To Be Implemented....")
+            accounts = load_accounts()
         elif (config.DEBUG and choice == "9") or (not config.DEBUG and choice == "7") or choice in ["7", "q", "quit"]:
             if config.DEBUG:
                 #download_accounts(test_accounts)
-                print("To Be Implemented....")
+                save_accounts(accounts)
             else:
                 save_accounts(accounts)
             print("Exiting program...")
             break
         elif choice == "l":
             accounts = load_accounts()
-        elif choice == "t":
-            print("To Be Implemented....")
             #print((" Loaded Test Accounts!"))
         else:
             print("Invalid option, try again.")
