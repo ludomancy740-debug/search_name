@@ -2,16 +2,23 @@
     "Alice": {
         "type": "CheckingAccount",
         "owner": "Alice",
-        "balance": 200,
+        "balance": 240,
         "pin": "0000",
         "transactions": []
     },
     "Bob": {
         "type": "CheckingAccount",
         "owner": "Bob",
-        "balance": 100,
+        "balance": 4045,
         "pin": "0000",
-        "transactions": []
+        "transactions": [
+            {
+                "time": "2025-09-09 17:33:43",
+                "action": "Withdraw",
+                "amount": 50,
+                "balance": 4045
+            }
+        ]
     },
     "Charles": {
         "type": "SavingsAccount",

@@ -65,6 +65,14 @@ class SavingsAccount(BankAccount):
 
 
 class CheckingAccount(BankAccount):
+    def deposit(self, amount):
+        if amount > 0:
+            self._balance += amount
+            print(f"[{self.owner}] Deposited £{amount}. New Balance: £{self._balance}")
+            self.record_transaction("Deposit", amount)
+        else:
+            print("Deposit must be greater than zero!")
+
     def withdraw(self, amount):
         if amount + CHECKING_FEE <= self._balance:
             self._balance -= (amount + CHECKING_FEE)
@@ -79,6 +87,14 @@ class OverdraftAccount(BankAccount):
         super().__init__(owner, balance, pin)
         self.overdraft = overdraft
 
+    def deposit(self, amount):
+        if amount > 0:
+            self._balance += amount
+            print(f"[{self.owner}] Deposited £{amount}. New Balance: £{self._balance}")
+            self.record_transaction("Deposit", amount)
+        else:
+            print("Deposit must be greater than zero!")
+
     def withdraw(self, amount):
         if self._balance - amount >= -self.overdraft:
             self._balance -= amount
@@ -86,6 +102,8 @@ class OverdraftAccount(BankAccount):
             self.record_transaction("Withdraw", amount)
         else:
             print(f"Overdraft limit reached. Balance: £{self._balance}, Limit: -£{self.overdraft}")
+    def show_balance(self):
+        print(f"Owner: {self.owner} | Balance: £{self._balance} Overdraft: £{self.overdraft}")        
 
 # ========== Combined Classes (Mixin + Subclass) ==========
 class LoggingSavingsAccount(SavingsAccount, LoggingMixin):

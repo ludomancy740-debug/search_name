@@ -4,10 +4,9 @@ from accounts import SavingsAccount, CheckingAccount, OverdraftAccount
 
 #Change storage based on debug
 if config.DEBUG:
-    SAVE_FILE = "bank_data.json"
-else:
     SAVE_FILE = "test_bank_data.json"
-    
+else:
+    SAVE_FILE = "bank_data.json"
 
 def save_accounts(accounts):
     data = {}
@@ -68,7 +67,7 @@ def load_accounts():
 
         # Store object back into dict
         accounts[name] = acc
-        print(f"{name}'s account added.")
+        #print(f"{name}'s account added.")
 
     print(" Accounts loaded.")
     return accounts

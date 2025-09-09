@@ -1,12 +1,10 @@
 import getpass
+import config
 from accounts import SavingsAccount, CheckingAccount, OverdraftAccount, LoggingMixin, LoggingCheckingAccount, LoggingOverdraftAccount, LoggingSavingsAccount
 from helpers import get_amount, verify_account
-from config import DEFAULT_INTEREST_RATE, DEFAULT_OVERDRAFT
-
-accounts = {}
 
 #----- Operations -----#
-def create_account():
+def create_account(accounts):
     owner = input("Enter name: ").strip().title()
     pin = getpass.getpass("Set a 4-digit PIN: ").strip()
     if len(pin) != 4 or not pin.isdigit():
@@ -99,3 +97,19 @@ def get_amount(prompt="Enter amount: £"):
         except ValueError:
             print("Please enter a valid number.")
 
+def login(accounts):
+    name = input("Enter Account Name: ").strip().title()
+    if name.lower() == "admin":
+        pin = getpass.getpass("Enter Admin PIN: ").strip()
+        if pin == config.ADMIN_PIN:
+            print("Admin login successful")
+            return "ADMIN", None
+        else:
+            print("Incorrect Admin PIN")
+            return None
+    if name not in accounts:
+        print("Account not found.")
+        return None
+    if verify_account(accounts, name):
+        print(f"Login successful, welcome {name}!")
+        return "USER", accounts[name]

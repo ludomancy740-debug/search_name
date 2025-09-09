@@ -7,3 +7,5 @@ DEFAULT_OVERDRAFT = 100
 
 # Toggle debug messages
 DEBUG = False
+ADMIN_PIN = "9999"
+APP_RUNNING = True
